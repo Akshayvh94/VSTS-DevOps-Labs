@@ -27,7 +27,7 @@ In your Team project, under **Build and Release** section, go to **White Source 
 
 <img src="images\Activate White Source Bolt.png">
 
-<br/>
+Upon activation, the below message is displayed.
 
 <img src="images\14 days trial.png">
 
