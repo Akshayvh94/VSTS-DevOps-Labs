@@ -1,6 +1,18 @@
 ## Managing Technical Debt with Visual Studio Team Services and SonarQube 
 
+## Overview
+
 In this lab, you will be introduced to Technical debt, how to configure your Team Build Definitions to use SonarQube, how to understand the analysis results.
+
+<a href="https://www.sonarqube.org/">SonarQube</a> is an open source platform for continuous inspection of code quality to perform automatic reviews with static analysis of code to
+
+- Detect bugs
+- Code smells
+- Security vulnerabilities
+- Centralize Quality
+
+SonarQube integrates with the entire DevOps toolchain including build systems, CI engines, promotion pipelines, using webhooks and its comprehensive RestAPI.
+
 
 ## Pre-requisites
 
