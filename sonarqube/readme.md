@@ -1,26 +1,23 @@
-## Managing Technical Debt with Visual Studio Team Services and SonarQube 
+## Managing Technical Debt using VSTS and SonarQube 
 
 ## Overview
 
-In this lab, you will be introduced to Technical debt, how to configure your Team Build Definitions to use SonarQube, how to understand the analysis results.
+In this lab, you will be introduced to Technical Debt by configuring team build definitions to use SonarQube and  analyze the results.
 
 <a href="https://www.sonarqube.org/">SonarQube</a> is an open source platform for continuous inspection of code quality to perform automatic reviews with static analysis of code to
 
-- Detect bugs
-- Code smells
-- Security vulnerabilities
-- Centralize Quality
-
-SonarQube integrates with the entire DevOps toolchain including build systems, CI engines, promotion pipelines, using webhooks and its comprehensive RestAPI.
-
+- <a href="http://bit.ly/2AN9LIE">Detect Bugs
+- Code Smells
+- Security Vulnerabilities
+- Centralize Quality</a>
 
 ## Pre-requisites
 
-1. **Microsoft Azure Account:** You will need a valid and active azure account for the labs
+1. **Microsoft Azure Account:** You need a valid and active azure account for the labs
 
 2. You need a **Visual Studio Team Services Account** and <a href="http://bit.ly/2gBL4r4">Personal Access Token</a>
 
-3. You will need a **SonarQube** server
+3. You need a **SonarQube** server
 
 ## Setting up the project
 
@@ -34,7 +31,7 @@ SonarQube integrates with the entire DevOps toolchain including build systems, C
 
 ## Setting up the Environment
 
-1. Click on **Deploy To Azure** to spin up a SonarQube Server on Azure VM.
+1. Click **Deploy To Azure** to provision SonarQube Server on Azure VM.
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhsachinraj%2FAzurelabs%2Fmaster%2Fsonarqube%2Ftemplates%2Fazuredeploy.json"><img src="http://azuredeploy.net/deploybutton.png"></a>
 
@@ -49,67 +46,87 @@ SonarQube integrates with the entire DevOps toolchain including build systems, C
       </tr>
    </thead>
    <tr>
-      <td>sqVM_AppName</td>
-      <td>Name of the VM that SonarQube will be installed upon</td>
+      <td>SQ_VM_Name</td>
+      <td>name of the VM where SonarQube will be installed</td>
       
    </tr>
    <tr>
-      <td>sq_PublicIP_DnsPrefix</td>
-      <td>The prefix of the public URL for the VM on the Internet (Max 63 chars, lower-case). It should match with the following regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$ or it will raise an error. This will be used to build the fully qualified URL for the SonarQube site in the form of http://[sq_PublicIP_DnsPrefix].[AzureRegion].cloudapp.azure.com Ex: A value of "my-sonarqube" will result in a URL of http://my-sonarqube.eastus.cloudapp.azure.com if the ARM template is deployed into a storage account hosted in the EASTUS Azure region</td>
+      <td>SQ_DNS_NAME</td>
+      <td>unique dns name to be provided with the following pattern:- <b>^[a-z][a-z0-9-]{1,61}[a-z0-9]$</b> or it will throw an error</td>
       
    </tr>
    <tr>
-      <td>sqVM_AppAdmin_UserName</td>
-      <td>Local Admin account name for the SonarQube VM</td>
+      <td>SQ_VM_UserName</td>
+      <td>local admin account for the SonarQube VM</td>
       
    </tr>
    <tr>
-      <td>sqVM_AppAdmin_Password</td>
-      <td>Password for the SonarQube VM Local Admin account</td>
+      <td>SQ_VM_UserPassword</td>
+      <td>password for the SonarQube VM</td>
       
    </tr>
    <tr>
-      <td>sqDB_Admin_UserName</td>
-      <td>Admin account name for Azure SQL Server</td>
+      <td>SQ_DBAdmin_UserName</td>
+      <td>admin account for Azure SQL Server</td>
       
    </tr>
    <tr>
-      <td>sqDB_Admin_Password</td>
-      <td>Password for Azure SQL Server Admin account</td>
+      <td>SQ_DBAdmin_Password</td>
+      <td>password for Azure SQL Server</td>
       
    </tr>
    
    </table>
 
-2. Once the deployment is successful, you should see all the resources in the resource group in Azure Portal.
+2. Once the deployment is successful, you will see all the resources in the resource group in Azure Portal.
 
    <img src="images/azure_resources.png">
 
-3. Access the **SonarQube** portal by providing its public address in the browser. The address format is **http://[sq_PublicIP_DnsPrefix].[AzureRegion].cloudapp.azure.com:9000**.
+3. Access the **SonarQube** portal by browsing the public address. Copy the DNS name from the VM in Azure Portal as shown and append :9000 at the end. The final URL will be http://YOUR_DNS_NAME:**9000**
 
-   >You can login to the SonarQube Portal using the following credentials- **Username= admin, Password= admin**
+   <img src="images/dns_name.png">
+
+4. Login to the SonarQube Portal using the following credentials-    
+   >**Username= admin, Password= admin**
 
    <img src="images/sonarqube_portal.png">
 
 
-## Configure SonarQube Server
+## Exercise 1a: Configure SonarQube Server
 
-1. Login to the portal with the above mentioned credentials.
+To start code analysis, we need a project to be created in the sonarqube. 
 
-2. Click on **Administration** and go to **Projects-->Management**
+1. Login to the sonarqube portal.
+
+2. Click **Administration**, go to **Projects-->Management**.
 
    <img src="images/sonar_admin.png">
 
-3. Create Project as shown with the following details.
+3. Create project with the details as shown.
 
    <img src="images/project_creation.png">
 
+## Exercise 1b: Update Endpoint
 
-## Configuring CI pipeline for SonarQube
+During the project provisioning, a dummy endpoint would be created. We will update the endpoint with sonarqube details.
 
-1. We have a **Java** Application provisioned by the demo generator system. We will run the analysis for the same.
+1. In VSTS, go to **Services** by clicking the gear icon, and click **Update service configuration** link .
 
-2. Open the build definition **SonarQube** to explore the tasks. The tasks that is used in the build definition are listed in the table below.
+   <img src="images/update_endpoint.png">
+
+2. Update endpoint with the below details and click **OK**-
+
+   - **Server URL**: http://YOUR_DNS_NAME:9000
+   - **User name**: admin
+   - **Password**:  admin
+
+   <img src="images/update_2.png">
+
+## Exercise 2: Configure and Trigger build
+
+Now that SonarQube server is running, we will trigger the build to analyse the java code provisioned by the demo generator system.
+
+1. Go to **Builds** under **Build and Release** tab, Edit the build definition **SonarQube**. The tasks used in the build definition are listed.
 
    <table width="100%">
    <thead>
@@ -120,46 +137,41 @@ SonarQube integrates with the entire DevOps toolchain including build systems, C
    </thead>
    <tr>
       <td><a href="http://bit.ly/2lvftfo"><b>Maven</b></a> <img src="images/maven.png"></td>
-      <td>Used to build Java code</td>
+      <td>builds and tests java code</td>
    </tr>
    <tr>
       <td><a href="http://bit.ly/2grMxTQ"><b>Copy Files</b></a> <img src="images/copy-files.png"> </td>
-      <td>Used to Copy files from source to destination folder using match patterns </td>
+      <td>copy files from source to destination folder using match patterns</td>
    </tr>
    <tr>
       <td><a href="http://bit.ly/2yBgXde"><b>Publish Build Artifacts</b></a> <img src="images/publish-build-artifacts.png"> </td>
-      <td> Used to share the build artifacts </td>
+      <td> publishes the build artifacts </td>
    </tr>
    </table>
 
-3. Configure the **Maven** task with **SonarQube Endpoint, Project Name, Project Key** as shown below.
-
-   **NOTE**: You need to update SonarQube Endpoint with your own endpoint. Click on **Manage** and then update with the following parameters-
-   
-   - **Connection Name**- SonarQube
-   - **Server URL**- Your SonarQube server URL i.e **http://YOUR_DNS_NAME.cloudapp.azure.com:9000**
-   - **User name**- admin
-   - **Password/Token Key**- admin
-   
-   After updating the endpoint, you need to update **SonarQube Project Name, Key**. Use the same name and key that you created from the previous section and update.
+3. Configure the **Maven** task with **Project Name, Project Key** as defined in **Exercise 1a-->step 3**.
    
    <br/>
 
    <img src="images/build_configure.png">
 
-3. Save and trigger the build to see the in progress status.
+3. Save and trigger the build. You will see the in progress status.
 
    <img src="images/build_in_progress.png">
 
-4. Once the build is completed, you can see the summary which shows **Test Results, Code Coverage, SonarQube Analysis Report** as shown below.
+4. You will see the build summary with **Test Results, Code Coverage** and link to **SonarQube Analysis Report** when completed.
 
    <img src="images/build_summary.png">
 
-5. Navigate to **SonarQube** Portal by providing its public address to see the analysis results by selecting the project.
+5. Go to **SonarQube** portal by clicking on the link in the build summary. You will see the dashboard.
 
    <img src="images/analysis_report.png">
 
-   <img src="images/analysis_2.png">
+## Exercise 3: Analyse SonarQube Reports
+
+We will analyse the report in sonarqube portal to see if there are critical bugs and fix them in our code.
+
+## TBA
 
 ## Summary
 
@@ -168,6 +180,4 @@ With **Visual Studio Team Services** and **SonarQube** you can easily schedule t
 ## Feedback
 
 
-
-   
 
