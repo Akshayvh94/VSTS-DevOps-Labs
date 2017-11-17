@@ -35,7 +35,7 @@ In this lab, you will be introduced to Technical Debt by configuring team build 
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhsachinraj%2FAzurelabs%2Fmaster%2Fsonarqube%2Ftemplates%2Fazuredeploy.json"><img src="http://azuredeploy.net/deploybutton.png"></a>
 
-   Provide the following valid parameters as shown in the table.
+   Provide the following parameters as shown.
 
    <table width="100%">
    <thead>
@@ -52,7 +52,7 @@ In this lab, you will be introduced to Technical Debt by configuring team build 
    </tr>
    <tr>
       <td>SQ_DNS_NAME</td>
-      <td>unique dns name to be provided with the following pattern:- <b>^[a-z][a-z0-9-]{1,61}[a-z0-9]$</b> or it will throw an error</td>
+      <td><b>unique</b> dns name to be provided with the following pattern:- <b>^[a-z][a-z0-9-]{1,61}[a-z0-9]$</b> or it will throw an error. For ex: sonarqubedns</td>
       
    </tr>
    <tr>
@@ -78,7 +78,7 @@ In this lab, you will be introduced to Technical Debt by configuring team build 
    
    </table>
 
-2. Once the deployment is successful, you will see all the resources in the resource group in Azure Portal.
+2. Once the deployment is successful, you will see the resources in Azure Portal.
 
    <img src="images/azure_resources.png">
 
@@ -155,7 +155,7 @@ Now that SonarQube server is running, we will trigger the build to analyse the j
 
    <img src="images/build_configure.png">
 
-3. Save and trigger the build. You will see the in progress status.
+3. Save and trigger the build.
 
    <img src="images/build_in_progress.png">
 
@@ -163,7 +163,7 @@ Now that SonarQube server is running, we will trigger the build to analyse the j
 
    <img src="images/build_summary.png">
 
-5. Go to **SonarQube** portal by clicking on the link in the build summary. You will see the dashboard.
+5. Go to **SonarQube** portal by clicking on the link in the build summary to see the dashboard.
 
    <img src="images/analysis_report.png">
 
