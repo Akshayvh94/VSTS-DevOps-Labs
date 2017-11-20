@@ -2,28 +2,39 @@
 
 ## Overview
 
-This lab shows how you can check vulnerabilities in the code using VSTS and WhiteSource Bolt for Java Application.
+This lab shows how you can use <a href="https://www.whitesourcesoftware.com/"  target =_blank>WhiteSource</a> with VSTS to automatically detect and alerts on vulnerable open source components, outdated libraries, and licenses compliance issues in your code. We will be using WebGoat, a deliberately insecure web application maintained by OWASP designed to teach web application security lessons.
 
-WhiteSource Bolt is an open source security and management solution. Team Services integration with WhiteSource Bolt will enable you to:
+Team Services integration with WhiteSource Bolt will enable you to:
 
-1. Detect vulnerable open source components
-2. Get open source inventory reports per project or build
-3. Enforce open source license compliance
-4. Findout **out-of-date** open source libraries and recommendations to update
+1. Detect and remedy vulnerable open source components.
+2. Generate comprehensive open source inventory reports per project or build.
+3. Enforce open source license compliance, including dependencies’ licenses.
+4. Identify outdated open source libraries with recommendations to update.
+
+<img src="images/WhiteSource.png">
+
+For more information, visit <a href="http://docs.whitesourcesoftware.com/display/serviceDocs/WhiteSource+Bolt" target =_blank>here</a>
 
 ## Pre-requisites
 
-1.  You need a <b>Visual Studio Team Services Account</b> and <a href="http://bit.ly/2gBL4r4">Personal Access Token</a>
+1. You need a Visual Studio Team Services Account and <a href="https://docs.microsoft.com/en-us/vsts/accounts/use-personal-access-tokens-to-authenticate"  target =_blank>Personal Access Token</a>
+ 
+ 2. You need to install the **Whitesource Bolt** extension from <a href="https://marketplace.visualstudio.com/items?itemName=whitesource.ws-bolt" target=_blank> Visual Studio Marketplace</a>
 
-## Setting up the project
+## Setting up the VSTS project
 
-1. Use <a href="https://vstsdemogenerator.azurewebsites.net" target="_blank">VSTS Demo Data Generator</a> to provision a project on your VSTS account 
+1. Use <a href="https://vstsdemobuildersite.azurewebsites.net/?name=whitesource%20bolt" target="_blank">VSTS Demo Data Generator</a> to provision the  WhiteSource project on your VSTS account.
 
- 2. Select **WhiteSource Bolt** for the template
 
-## Activate WhiteSource Bolt
+## Exercise 1: Activate WhiteSource Bolt
 
 In your Team project, under **Build and Release** section, go to **White Source Bolt** tab and activate **14 days** trial license.
+
+If you are an active MSDN subscriber, click here to get key from your <a href="https://my.visualstudio.com/Benefits?wt.mc_id=o~msft~profile~devprogram_attach&workflowid=devprogram&mkt=en-us" target=_blank> Dev Essentials page</a>
+
+<img src="images/Dev_Essentials.png">
+
+<br/>
 
 <img src="images\Activate White Source Bolt.png">
 
@@ -31,11 +42,11 @@ Upon activation, the below message is displayed.
 
 <img src="images\14 days trial.png">
 
-## Exercise
+## Exercise 2: CI Build
 
 We have a **Java code** provisioned by the demo generator system. We will use **WhiteSource Bolt** extension to check the vulnerable components present in this code.
 
-1. Go to **Build and Release** tab and queue the build.
+1. Go to **Build and Release** tab and check if the build is triggered.
 
    <img src="images/QueueBuild.png">
 
@@ -54,33 +65,35 @@ We have a **Java code** provisioned by the demo generator system. We will use **
    </thead>
    <tr>
       <td><a href="http://bit.ly/2lvftfo"><b>Maven</b></a> <img src="images/maven.png"></td>
-      <td>Used to build your J`ava code </td>
+      <td>builds Java code </td>
    </tr>
    <tr>
       <td><a href="http://bit.ly/1Vxz1Jb"><b>WhiteSource Bolt</b></a> <img src="images/whitesourcebolt.png"> </td>
-      <td>Detect & fix security vulnerabilities, problematic open source licenses</td>
+      <td>scans the code to detect security vulnerabilities, problematic open source licenses</td>
    </tr>
    <tr>
       <td><a href=""><b>Copy Files</b></a> <img src="images/copy-files.png"> </td>
-      <td>Used to Copy files from source to destination folder using match patterns </td>
+      <td>copies files from source to destination folder using match patterns </td>
    </tr>
    <tr>
       <td><a href=""><b>Publish Build Artifacts</b></a> <img src="images/publish-build-artifacts.png"> </td>
-      <td> Used to share the build artifacts </td>
+      <td>shares the artifacts produced by the build </td>
    </tr>
    </table>
 
-4. Once the build is completed, you can see the summary which shows **test results, code coverage** etc as shown below.
+4. Once the build is completed, you will see the summary which shows **test results, code coverage** as shown below.
 
    <img src="images/build_summary.png">
 
-5. From your build summary, go to **Whitesource Bolt Build Report** to see the vulnerability report.
+5. From the build summary, go to **Whitesource Bolt Build Report** to see the vulnerability report.
 
    <img src="images/report.png">
 
 ## Analyse Reports
 
 Now that we have the report generated, lets analyse them one by one.
+
+# TBA
 
 ### Security
 
