@@ -215,7 +215,7 @@ We see from the above dashboard that we have a critical bug. Let us fix this.
 
    <img src="images/bug_fix_sonar_portal.png">
 
-7. We also see the Quality Gates are failing since previous version because, there is no code coverage available for the new code that we added to fix the bug.
+We also see the Quality Gates are failing since previous version because, there is no code coverage available for the new code that we added to fix the bug. This way we get to analyse the code for every build and make sure we don't ship buggy software thus keeping the developers in a inner-loop to improve the code quality.
 
 ## Summary
 
