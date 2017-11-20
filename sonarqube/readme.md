@@ -207,15 +207,15 @@ We see from the above dashboard that we have a critical bug. Let us fix this.
 
 4. Commit the changes and go to **Build** to see the CI build in-progress.
 
-5. Once the build is completed, you will see the **Quality Gates** failing.
+5. Once the build is completed, you will see the **Quality Gate** failing.
 
    <img src="images/build_summary_bug_fix.png">
 
-6. Go to sonarqube portal to see if the bug is fixed. You will see the bug count is **0** and fixed. 
+6. Go to sonarqube portal. You will see the bug count is **0** and fixed now. 
 
    <img src="images/bug_fix_sonar_portal.png">
 
-We also see the Quality Gates are failing since previous version because, there is no code coverage available for the new code that we added to fix the bug. This way we get to analyse the code for every build and make sure we don't ship buggy software thus keeping the developers in a inner-loop to improve the code quality.
+We also see the Quality Gates are failing since previous version because there is no code coverage available for the new code that we added to fix the bug. This way we get to analyse the code for every build and make sure we don't ship buggy software thus keeping the developers in a inner-loop to improve the code quality.
 
 ## Summary
 
