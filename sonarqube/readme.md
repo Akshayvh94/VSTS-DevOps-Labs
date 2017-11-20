@@ -189,11 +189,21 @@ We see from the above dashboard that we have a critical bug. Let us fix this.
    
    >src/main/java/com/microsoft/example/servlet/LoginServlet.java
 
-   Go to line number **28** and replace the code with the below snippet.
+   Make the following changes in the code as shown:
 
-   >session.setAttribute("employeeList", (Serializable)fareList);
+   - Go to line number **3** and import the package **Serializable** as shown.
 
-   <img src="images/code_edit.png">
+      >import.java.io.Serializable;
+
+      <img src="images/code_import.png">
+
+
+
+   - Go to line number **28** and replace the code with the below snippet.
+
+      >session.setAttribute("employeeList", (Serializable)fareList);
+
+      <img src="images/code_edit.png">
 
 4. Commit the changes and go to **Build** to see the CI build in-progress.
 
