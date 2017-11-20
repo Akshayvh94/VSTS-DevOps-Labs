@@ -19,15 +19,15 @@ In this lab, you will be introduced to Technical Debt by configuring team build 
 
 3. You need a **SonarQube** server
 
-## Setting up the project
+## Setting up the VSTS project
 
 1. Use <a href="https://vstsdemogenerator.azurewebsites.net" target="_blank">VSTS Demo Data Generator</a> to provision a project on your VSTS account.
 
    ![](images/vstsdemogen.png)
 
-2. Select **SonarQube** for the template.
+2. Once the project is provisioned, select the URL to navigate to the project that you provisioned.
 
-3. Once the project is provisioned, select the URL to navigate to the project that you provisioned.
+   <img src="images/vsts_demo.png" height="450px">
 
 ## Setting up the Environment
 
@@ -169,15 +169,13 @@ Now that SonarQube server is running, we will trigger the build to analyse the j
 
 ## Exercise 4: Analyse SonarQube Reports
 
-We will analyse the report in sonarqube portal to see if there are critical bugs and fix them in our code.
-
-We see from the above dashboard that we have a critical bug. Let us fix this.
+We will analyse the report in sonarqube portal to see if there are critical bugs and fix them in our code. From the above dashboard we have a critical bug. Let us fix this.
 
 1. Go to sonarqube and click **Bugs**.
 
    <img src="images/sonar_portal.png">
 
-2. You will see the details of the bug being provided by sonarqube as shown. Double click to expand.
+2. Double click to see the details of the bug.
 
    <img src="images/bug_details.png">
 
@@ -185,13 +183,15 @@ We see from the above dashboard that we have a critical bug. Let us fix this.
 
    <img src="images/bug_details_2.png">
 
-3. The error says that we have to explicitly cast the list object by making serializable. Lets do the fix by going to the below path-
+3. The error is due to explicitly casting the list object by making serializable. Lets fix the bug.
+
+   Go to below path to edit the file:-
    
    >src/main/java/com/microsoft/example/servlet/LoginServlet.java
 
    Make the following changes in the code as shown:
 
-   - Go to line number **3** and import the package **Serializable** as shown.
+   - Go to line number **3** and add the below code as shown.
 
       >import.java.io.Serializable;
 
@@ -207,7 +207,7 @@ We see from the above dashboard that we have a critical bug. Let us fix this.
 
 4. Commit the changes and go to **Build** to see the CI build in-progress.
 
-5. Once the build is completed, you will see the **Quality Gate** failing.
+5. Once the build is completed, you will see the Quality Gate **failing** in the build summary.
 
    <img src="images/build_summary_bug_fix.png">
 
@@ -215,7 +215,9 @@ We see from the above dashboard that we have a critical bug. Let us fix this.
 
    <img src="images/bug_fix_sonar_portal.png">
 
-We also see the Quality Gates are failing since previous version because there is no code coverage available for the new code that we added to fix the bug. This way we get to analyse the code for every build and make sure we don't ship buggy software thus keeping the developers in a inner-loop to improve the code quality.
+We see the Quality Gate is failing after code changes as there is no code coverage available for the new code that we added to fix the bug.
+
+This is how we analyse the code for every build and continuously improve the code quality to ship quality products.
 
 ## Summary
 
