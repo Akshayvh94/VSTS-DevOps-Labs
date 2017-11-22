@@ -17,11 +17,9 @@ In this lab, you will be introduced to Technical Debt by configuring team build 
 
 2. You need a **Visual Studio Team Services Account** and <a href="http://bit.ly/2gBL4r4">Personal Access Token</a>
 
-3. You need a **SonarQube** server
-
 ## Setting up the VSTS project
 
-1. Use <a href="https://vstsdemogenerator.azurewebsites.net" target="_blank">VSTS Demo Data Generator</a> to provision a project on your VSTS account.
+1. Use <a href="http://bit.ly/2AWznna" target="_blank">VSTS Demo Data Generator</a> to provision a project on your VSTS account.
 
    ![](images/vstsdemogen.png)
 
@@ -82,7 +80,7 @@ In this lab, you will be introduced to Technical Debt by configuring team build 
 
    <img src="images/azure_resources.png">
 
-3. Access the **SonarQube** portal by browsing the public address. Copy the DNS name from the VM in Azure Portal as shown and append :9000 at the end. The final URL will be http://YOUR_DNS_NAME:**9000**
+3. Access the **SonarQube** portal by browsing the public address. Copy the DNS name from the VM in Azure Portal as shown and append :9000 at the end. The final URL will be **http://YOUR_DNS_NAME:9000**
 
    <img src="images/dns_name.png">
 
@@ -185,7 +183,7 @@ We will analyse the report in sonarqube portal to see if there are critical bugs
 
 3. The error is due to explicitly casting the list object by making serializable. Lets fix the bug.
 
-   Go to below path to edit the file:-
+   Go to below path to edit the file in **VSTS**:-
    
    >src/main/java/com/microsoft/example/servlet/LoginServlet.java
 
@@ -193,11 +191,9 @@ We will analyse the report in sonarqube portal to see if there are critical bugs
 
    - Go to line number **3** and add the below code as shown.
 
-      >import.java.io.Serializable;
+      >import java.io.Serializable;
 
       <img src="images/code_import.png">
-
-
 
    - Go to line number **28** and replace the code with the below snippet.
 
