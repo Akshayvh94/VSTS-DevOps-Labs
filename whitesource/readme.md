@@ -28,9 +28,12 @@ For more information, visit <a href="http://docs.whitesourcesoftware.com/display
 
 ## Exercise 1: Activate WhiteSource Bolt
 
-In your Team project, under **Build and Release** section, go to **White Source Bolt** tab and activate **14 days** trial license.
+After installing the extension, you will need to activate your project with an activation code.
 
-If you are an active MSDN subscriber, click here to get key from your <a href="https://my.visualstudio.com/Benefits?wt.mc_id=o~msft~profile~devprogram_attach&workflowid=devprogram&mkt=en-us" target=_blank> Dev Essentials page</a>
+In your Team project, under **Build and Release** section, go to **White Source Bolt** tab and activate **14-days** <a href="https://www.whitesourcesoftware.com/whitesource_bolt_visualstudio_2017/#activate">trial license</a>.
+
+If you are a Visual Studio Enterprise subscriber, you are entitled to 6-months free subscription. You can get your activation code from the <a href="https://my.visualstudio.com/"> Visual Studio Enterprise benefit page</a> and follow the <a href="https://www.whitesourcesoftware.com/vse_whitesource_bolt//#activate">instructions</a>.
+
 
 <img src="images/Dev_Essentials.png">
 
@@ -48,7 +51,7 @@ We have a **Java code** provisioned by the demo generator system. We will use **
 
 1. Go to **Build and Release** tab and check if the build is triggered.
 
-   <img src="images/QueueBuild.png">
+  <img src="images/QueueBuild.png">
 
 2. You can see the build in progress status. 
 
@@ -65,25 +68,25 @@ We have a **Java code** provisioned by the demo generator system. We will use **
    </thead>
    <tr>
       <td><a href="http://bit.ly/2lvftfo"><b>Maven</b></a> <img src="images/maven.png"></td>
-      <td>builds Java code </td>
+      <td>builds Java code with the provided pom xml file </td>
    </tr>
    <tr>
       <td><a href="http://bit.ly/1Vxz1Jb"><b>WhiteSource Bolt</b></a> <img src="images/whitesourcebolt.png"> </td>
-      <td>scans the code to detect security vulnerabilities, problematic open source licenses</td>
+      <td>scans the code in the provided working directory/root directory to detect security vulnerabilities, problematic open source licenses</td>
    </tr>
    <tr>
       <td><a href=""><b>Copy Files</b></a> <img src="images/copy-files.png"> </td>
-      <td>copies files from source to destination folder using match patterns </td>
+      <td>copies the resulting JAR files from source to destination folder using match patterns </td>
    </tr>
    <tr>
       <td><a href=""><b>Publish Build Artifacts</b></a> <img src="images/publish-build-artifacts.png"> </td>
-      <td>shares the artifacts produced by the build </td>
+      <td>publishes the artifacts produced by the build </td>
    </tr>
    </table>
 
 4. Once the build is completed, you will see the summary which shows **test results, code coverage** as shown below.
 
-   <img src="images/build_summary.png">
+<img src="images/build_summary.png">
 
 5. From the build summary, go to **Whitesource Bolt Build Report** to see the vulnerability report.
 
