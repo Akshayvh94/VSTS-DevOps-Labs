@@ -80,7 +80,7 @@ In this lab, you will be introduced to Technical Debt by configuring team build 
 
    <img src="images/azure_resources.png">
 
-3. Access the **SonarQube** portal by browsing the public address. Copy the DNS name from the VM in Azure Portal as shown and append :9000 at the end. The final URL will be **http://YOUR_DNS_NAME:9000**
+3. Access the **SonarQube** portal by browsing the public address. The default port for SonarQube is 9000. Copy the DNS name from the VM in Azure Portal as shown and append :9000 at the end. The final URL will be **http://YOUR_DNS_NAME:9000**
 
    <img src="images/dns_name.png">
 
@@ -92,7 +92,7 @@ In this lab, you will be introduced to Technical Debt by configuring team build 
 
 ## Exercise 1: Configure SonarQube Server
 
-To start code analysis, we need a project to be created in the sonarqube. 
+To start code analysis, we need a project to be created in the sonarqube. The Projects area allows you to explore projects by multiple metrics in both the overall and leak persepectives. Here, we focus on an individual project.
 
 1. Login to the sonarqube portal.
 
@@ -100,7 +100,7 @@ To start code analysis, we need a project to be created in the sonarqube.
 
    <img src="images/sonar_admin.png">
 
-3. Create project with the details as shown.
+3. Create a project with its **Name** and **Key** as **MyShuttle**.
 
    <img src="images/project_creation.png">
 
@@ -157,7 +157,7 @@ Now that SonarQube server is running, we will trigger the build to analyse the j
 
    <img src="images/build_in_progress.png">
 
-4. You will see the build summary with **Test Results, Code Coverage** and link to **SonarQube Analysis Report** when completed.
+4. You will see the build summary with **Test Results, Code Coverage** and link to **SonarQube Analysis Report** when completed.  The **Quality Gate** displayed in the report is the best way to enforce a quality policy in your organization. Quality Gates are defined and managed in the **Quality Gates** page found in the top menu of the SonarQube portal.
 
    <img src="images/build_summary.png">
 
@@ -195,7 +195,7 @@ We will analyse the report in sonarqube portal to see if there are critical bugs
 
       <img src="images/code_import.png">
 
-   - Go to line number **28** and replace the code with the below snippet.
+   - Go to line number **28** and replace the existing code with below snippet.
 
       >session.setAttribute("employeeList", (Serializable)fareList);
 
