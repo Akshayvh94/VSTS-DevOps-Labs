@@ -17,16 +17,6 @@ In this lab, you will be introduced to Technical Debt by configuring team build 
 
 2. You need a **Visual Studio Team Services Account** and <a href="http://bit.ly/2gBL4r4">Personal Access Token</a>
 
-## Setting up the VSTS project
-
-1. Use <a href="http://bit.ly/2AWznna" target="_blank">VSTS Demo Data Generator</a> to provision a project on your VSTS account.
-
-   ![](images/vstsdemogen.png)
-
-2. Once the project is provisioned, select the URL to navigate to the project that you provisioned.
-
-   <img src="images/vsts_demo.png" height="450px">
-
 ## Setting up the Environment
 
 1. Click **Deploy To Azure** to provision SonarQube Server on Azure VM.
@@ -89,6 +79,16 @@ In this lab, you will be introduced to Technical Debt by configuring team build 
 
    <img src="images/sonarqube_portal.png">
 
+
+## Setting up the VSTS project
+
+1. Use <a href="http://bit.ly/2AWznna" target="_blank">VSTS Demo Data Generator</a> to provision a project on your VSTS account.
+
+   ![](images/vstsdemogen.png)
+
+2. Once the project is provisioned, select the URL to navigate to the project that you provisioned.
+
+   <img src="images/vsts_demo.png" height="450px">
 
 ## Exercise 1: Configure SonarQube Server
 
