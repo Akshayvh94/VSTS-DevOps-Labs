@@ -51,7 +51,7 @@ We have a **Java code** provisioned by the demo generator system. We will use **
 
 1. Go to **Build and Release** tab and check if the build is triggered.
 
-  <img src="images/QueueBuild.png">
+   <img src="images/QueueBuild.png">
 
 2. You can see the build in progress status. 
 
@@ -86,7 +86,7 @@ We have a **Java code** provisioned by the demo generator system. We will use **
 
 4. Once the build is completed, you will see the summary which shows **test results, code coverage** as shown below.
 
-<img src="images/build_summary.png">
+   <img src="images/build_summary.png">
 
 5. From the build summary, go to **Whitesource Bolt Build Report** to see the vulnerability report.
 
