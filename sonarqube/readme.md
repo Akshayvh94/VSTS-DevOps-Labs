@@ -96,15 +96,19 @@ Technical debt is the set of problems in a development effort that make forward 
 
 In this exercise you will create a Sonarqube project.
 
-To start code analysis, we need a project to be created in the SonarQube. The Projects area allows you to explore projects by multiple metrics in both the overall and leak persepectives. Here, we focus on an individual project.
-
 1. Login to the SonarQube portal.
 
-2. Click on **Administration** in the toolbar and then click on the **Projects** tab.
+2. Click on **Administration** in the toolbar, go to **Projects** tab and click **Management**.
 
    <img src="images/sonar_admin.png">
 
-3. Create a project with its **Name** and **Key** as **MyShuttle**.
+3. Create a project with **Name** and **Key** as **MyShuttle**. 
+
+   - **Name**: Name of the project that will be displayed on the web interface
+
+   - **Branch**: Track the quality of short-lived and long-lived code branches
+
+   - **Key**: The project key that is unique for each project
 
    <img src="images/project_creation.png">
 
