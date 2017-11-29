@@ -2,11 +2,13 @@
 
 ## Overview
 
-In this lab, you will be introduced to Technical Debt by configuring team build definitions to use SonarQube and  analyze the results.
+In this lab, you will be introduced to Technical debt management, how to configure your Team Build Definitions to use SonarQube and how to understand the analysis results.
+
+Technical debt is the set of problems in a development effort that make forward progress on customer value inefficient. Technical debt saps productivity by making code hard to understand, fragile, time-consuming to change, difficult to validate, and creates unplanned work that blocks progress.
 
 <a href="https://www.sonarqube.org/">SonarQube</a> is an open source platform for continuous inspection of code quality to perform automatic reviews with static analysis of code to
 
-- <a href="http://bit.ly/2AN9LIE">Detect Bugs
+- Detect Bugs
 - Code Smells
 - Security Vulnerabilities
 - Centralize Quality</a>
@@ -15,7 +17,7 @@ In this lab, you will be introduced to Technical Debt by configuring team build 
 
 1. **Microsoft Azure Account:** You need a valid and active azure account for the labs
 
-2. You need a **Visual Studio Team Services Account** and <a href="http://bit.ly/2gBL4r4">Personal Access Token</a>
+2. You need a **Visual Studio Team Services Account** and <a href="https://docs.microsoft.com/en-us/vsts/accounts/use-personal-access-tokens-to-authenticate">Personal Access Token</a>
 
 ## Setting up the Environment
 
@@ -86,17 +88,19 @@ In this lab, you will be introduced to Technical Debt by configuring team build 
 
    ![](images/vstsdemogen.png)
 
-2. Once the project is provisioned, select the URL to navigate to the project that you provisioned.
+2. Once the project is provisioned, select the URL to navigate.
 
-   <img src="images/vsts_demo.png" height="450px">
+   <img src="images/vsts_project_provisioning.png">
 
-## Exercise 1: Configure SonarQube Server
+## Exercise 1: Create a SonarQube Project
 
-To start code analysis, we need a project to be created in the sonarqube. The Projects area allows you to explore projects by multiple metrics in both the overall and leak persepectives. Here, we focus on an individual project.
+In this exercise you will create a Sonarqube project.
 
-1. Login to the sonarqube portal.
+To start code analysis, we need a project to be created in the SonarQube. The Projects area allows you to explore projects by multiple metrics in both the overall and leak persepectives. Here, we focus on an individual project.
 
-2. Click **Administration**, go to **Projects-->Management**.
+1. Login to the SonarQube portal.
+
+2. Click on **Administration** in the toolbar and then click on the **Projects** tab.
 
    <img src="images/sonar_admin.png">
 
@@ -120,9 +124,9 @@ During the project provisioning, a dummy endpoint would be created. We will upda
 
    <img src="images/update_2.png">
 
-## Exercise 3: Configure and Trigger build
+## Exercise 3: Modify the Build to Integrate with SonarQube
 
-Now that SonarQube server is running, we will trigger the build to analyse the java code provisioned by the demo generator system.
+Now that SonarQube server is running, we will modify the build definition to integrate with SonarQube to analyse the java code provisioned by the demo generator system.
 
 1. Go to **Builds** under **Build and Release** tab, edit the build definition **SonarQube**. The tasks used in the build definition are listed.
 
@@ -134,12 +138,12 @@ Now that SonarQube server is running, we will trigger the build to analyse the j
       </tr>
    </thead>
    <tr>
-      <td><a href="http://bit.ly/2lvftfo"><b>Maven</b></a> <img src="images/maven.png"></td>
-      <td>builds and tests java code</td>
+      <td><a href="https://docs.microsoft.com/en-gb/vsts/build-release/tasks/build/maven"><b>Maven</b></a> <img src="images/maven.png"></td>
+      <td>maven task compiles and runs unit tests for the java code</td>
    </tr>
    <tr>
       <td><a href="http://bit.ly/2grMxTQ"><b>Copy Files</b></a> <img src="images/copy-files.png"> </td>
-      <td>copy files from source to destination folder using match patterns</td>
+      <td>copy files will copy the build artifact to VSTS</td>
    </tr>
    <tr>
       <td><a href="http://bit.ly/2yBgXde"><b>Publish Build Artifacts</b></a> <img src="images/publish-build-artifacts.png"> </td>
@@ -147,7 +151,27 @@ Now that SonarQube server is running, we will trigger the build to analyse the j
    </tr>
    </table>
 
-3. Configure the **Maven** task with **Project Name, Project Key** as defined in **Exercise 1-->Step 3**.
+3. Click on the **Maven** task and scroll down to the **Code Analysis** section. Configure the SonarQube settings as follows-
+
+   <table width="100%">
+   <thead>
+      <tr>
+         <th width="40%"><b>Parameter</b></th>
+         <th><b>Value</b></th>
+         <th><b>Notes</b></th>
+      </tr>
+   </thead>
+   <tr>
+      <td><b>SonarQube Project Name</b></td>
+      <td>MyShuttle</td>
+      <td>The name of the project in SonarQube</td>
+   </tr>
+   <tr>
+      <td><b>SonarQube Project Key</b></td>
+      <td>MyShuttle</td>
+      <td>The unique key of the project in SonarQube</td>
+   </tr>
+   </table>
    
    <br/>
 
@@ -157,19 +181,19 @@ Now that SonarQube server is running, we will trigger the build to analyse the j
 
    <img src="images/build_in_progress.png">
 
-4. You will see the build summary with **Test Results, Code Coverage** and link to **SonarQube Analysis Report** when completed.  The **Quality Gate** displayed in the report is the best way to enforce a quality policy in your organization. Quality Gates are defined and managed in the **Quality Gates** page found in the top menu of the SonarQube portal.
+4. You will see the build summary with **Test Results, Code Coverage** and link to **SonarQube Analysis Report** when completed.  The **Quality Gate** displayed in the report is the best way to enforce a quality policy in your organization.
 
    <img src="images/build_summary.png">
 
-5. Go to **SonarQube** portal by clicking on the link in the build summary to see the dashboard.
+5. Click on the **Detailed SonarQube Report** link in the build summary to open the project in SonarQube.
 
    <img src="images/analysis_report.png">
 
 ## Exercise 4: Analyse SonarQube Reports
 
-We will analyse the report in sonarqube portal to see if there are critical bugs and fix them in our code. In the below dashboard we have a critical bug. Let us fix this.
+We will analyse the report in SonarQube portal to see if there are critical bugs and fix them in our code. In the below dashboard we have a critical bug. Let us fix this.
 
-1. Go to sonarqube and click **Bugs**.
+1. Go to SonarQube and click **Bugs**.
 
    <img src="images/sonar_portal.png">
 
@@ -177,11 +201,11 @@ We will analyse the report in sonarqube portal to see if there are critical bugs
 
    <img src="images/bug_details.png">
 
-   <br/>
+3. You will see the error in line number 28 of **LoginServlet.java** file as **Make "List" serializable or don't store it in the session**.
 
    <img src="images/bug_details_2.png">
 
-3. The error is due to explicitly casting the list object by making serializable. Lets fix the bug.
+4. The error is due to explicitly casting the list object by making serializable. Lets fix the bug.
 
    Go to below path to edit the file in **VSTS** code tab:-
    
@@ -201,23 +225,21 @@ We will analyse the report in sonarqube portal to see if there are critical bugs
 
       <img src="images/code_edit.png">
 
-4. Commit the changes and go to **Build** to see the CI build in-progress.
+5. Save and commit the changes.
 
-5. Once the build is completed, you will see the Quality Gate **failing** in the build summary.
+6. Once the CI build is completed, you will see the Quality Gate **failing** in the build summary.
 
    <img src="images/build_summary_bug_fix.png">
 
-6. Go to sonarqube portal. You will see the bug count is **0** and fixed now. 
+7. Go to SonarQube portal. You will see the bug count is **0** and fixed now. 
 
    <img src="images/bug_fix_sonar_portal.png">
 
-We see the Quality Gate is failing after code change as there is no code coverage available for the new code that we added to fix the bug.
-
-This is how we analyse the code for every build and continuously improve the code quality to ship quality products.
+We see the Quality Gate is failing after the code change as there is no unit tests created for the new code that we added to fix the bug.
 
 ## Summary
 
-With **Visual Studio Team Services** and **SonarQube** you can easily schedule the execution of analysis and provide a shared vision of code quality for developers, tech leads, managers and executives, also to act as a toll gate for application promotion or release.
+With **Visual Studio Team Services** and **SonarQube** you can easily manage code quality.
 
 ## Feedback
 
