@@ -258,8 +258,6 @@ We see the Quality Gate is failing after the code change as there is no unit tes
 
 ## Summary
 
-With **Visual Studio Team Services** and **SonarQube**, you can easily manage code quality.
-
 With **Visual Studio Team Services** and its integration with **SonarQube**, we can measure technical debt, analyze the results, manage and improve the code quality efficiently.
 
 ## Feedback
