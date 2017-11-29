@@ -25,9 +25,9 @@ Technical debt is the set of problems in a development effort that make forward 
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhsachinraj%2FAzurelabs%2Fmaster%2Fsonarqube%2Ftemplates%2Fazuredeploy.json"><img src="http://azuredeploy.net/deploybutton.png"></a>
 
-  <img src="images/CustomDeployAzure1.png"></a>
+    <img src="images/CustomDeployAzure1.png"></a>
 
-  <img src="images/CustomDeployAzure2.png"></a>
+    <img src="images/CustomDeployAzure2.png"></a>
 
   
    Provide the following parameters as shown.
@@ -92,9 +92,9 @@ Technical debt is the set of problems in a development effort that make forward 
 
 2. After providing all of the required values in the above table, check the Terms & Conditions checkbox and click on the Purchase button.
 
-<img src="images/CustomDeployAzure3.png"></a>
+   <img src="images/CustomDeployAzure3.png"></a>
 
->It usually takes around 25 minutes for the resource group creation.
+   >It takes approximately 25-30 minutes to provision the environment
 
 3. Once the deployment is successful, you will see the resources in Azure Portal.
 
@@ -118,7 +118,7 @@ Technical debt is the set of problems in a development effort that make forward 
 
    ![](images/vstsdemogen.png)
 
-2. Provide the **Project Name**, the **SonarQube URL** that was created previously and click on **Create Project**. Once the project is provisioned, select the URL to navigate.
+2. Provide the **Project Name**, the **SonarQube URL** that was created previously and click on **Create Project**. Once the project is provisioned, click the URL to navigate.
 
    <img src="images/vsts_project_provisioning.png">
    
@@ -157,15 +157,15 @@ Now that the SonarQube server is running, we will modify VSTS build definition t
       </tr>
    </thead>
    <tr>
-      <td><a href="https://docs.microsoft.com/en-gb/vsts/build-release/tasks/build/maven"><b>Maven</b></a> <img src="images/maven.png"></td>
+      <td><img src="images/maven.png"> <b>Maven</b></td>
       <td>compiles and runs unit tests for the java code</td>
    </tr>
    <tr>
-      <td><a href="http://bit.ly/2grMxTQ"><b>Copy Files</b></a> <img src="images/copy-files.png"> </td>
+      <td><img src="images/copy-files.png"> <b>Copy Files</b></td>
       <td>copies the build artifacts to VSTS</td>
    </tr>
    <tr>
-      <td><a href="http://bit.ly/2yBgXde"><b>Publish Build Artifacts</b></a> <img src="images/publish-build-artifacts.png"> </td>
+      <td><img src="images/publish-build-artifacts.png"> <b>Publish Build Artifacts</b></td>
       <td> publishes the build artifacts </td>
    </tr>
    </table>
@@ -232,7 +232,7 @@ We will analyse the report in SonarQube portal to see if there are critical bugs
 
    Make the following changes in the code as shown:
 
-   - Implement the below interface.
+   - Import the below package.
 
       >import java.io.Serializable;
 
@@ -246,11 +246,11 @@ We will analyse the report in SonarQube portal to see if there are critical bugs
 
 5. Commit the changes.
 
-6. Once the CI build is completed, you will see the Quality Gate **failing** in the build summary.
+6. Once the CI build completes, you will see the Quality Gate **failing** in the build summary.
 
    <img src="images/build_summary_bug_fix.png">
 
-7. Go to SonarQube portal. You will see the bug count is **0** and fixed now. 
+7. Go to SonarQube portal. You will see the bug count is **0**. 
 
    <img src="images/bug_fix_sonar_portal.png">
 
