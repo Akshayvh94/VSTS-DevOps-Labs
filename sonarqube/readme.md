@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this lab, you will be introduced to Technical debt management, how to configure your Team Build Definitions to use SonarQube and how to understand the analysis results.
+In this lab, you will be introduced to technical debt management, configuring VSTS Team Build definition to use SonarQube and how to understand the analysis results.
 
 Technical debt is the set of problems in a development effort that make forward progress on customer value inefficient. Technical debt saps productivity by making code hard to understand, fragile, time-consuming to change, difficult to validate, and creates unplanned work that blocks progress.
 
@@ -25,16 +25,27 @@ Technical debt is the set of problems in a development effort that make forward 
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhsachinraj%2FAzurelabs%2Fmaster%2Fsonarqube%2Ftemplates%2Fazuredeploy.json"><img src="http://azuredeploy.net/deploybutton.png"></a>
 
-   Provide the following parameters as shown.
+  <img src="images/CustomDeployAzure1.png"></a>
 
+  <img src="images/CustomDeployAzure2.png"></a>
+
+  
+   Provide the following parameters as shown.
    <table width="100%">
    <thead>
       <tr>
          <th width="50%"><b>Parameter Name</b></th>
          <th><b>Description</b></th>
          
-      </tr>
+
    </thead>
+   <tr>
+      <td>Subscription Details</td>
+      <td>Choose the active Azure subscription, create a new resource group along with the location of creation.</td>
+      
+   </tr>
+ 
+
    <tr>
       <td>SQ_VM_Name</td>
       <td>name of the VM where SonarQube will be installed</td>
@@ -65,14 +76,33 @@ Technical debt is the set of problems in a development effort that make forward 
       <td>password for Azure SQL Server</td>
       
    </tr>
-   
+   <tr>
+      <td>_artifacts Location</td>
+      <td>This value will be automatically generated</td>
+      
+   </tr>
+   <tr>
+      <td>_artifacts Location Sas Token</td>
+      <td>The Sas Token will be automatically generated</td>
+      
+   </tr>
    </table>
 
-2. Once the deployment is successful, you will see the resources in Azure Portal.
+
+
+2. After providing all of the required values in the above table, check the Terms & Conditions checkbox and click on the Purchase button.
+
+<img src="images/CustomDeployAzure3.png"></a>
+
+>It usually takes around 25 minutes for the resource group creation.
+
+3. Once the deployment is successful, you will see the resources in Azure Portal.
 
    <img src="images/azure_resources.png">
 
-3. Access the **SonarQube** portal by browsing the public address. The default port for SonarQube is 9000. Copy the DNS name from the VM in Azure Portal as shown and append :9000 at the end. The final URL will be **http://YOUR_DNS_NAME:9000**
+3. Access the **SonarQube** portal providing the DNS name suffixed by the port number. 
+
+   >The default port for SonarQube is 9000. Copy the DNS name from the created Virtual Machine in Azure Portal as shown and append :9000 at the end. The final URL will be **http://YOUR_DNS_NAME:9000**
 
    <img src="images/dns_name.png">
 
@@ -88,13 +118,13 @@ Technical debt is the set of problems in a development effort that make forward 
 
    ![](images/vstsdemogen.png)
 
-2. Once the project is provisioned, select the URL to navigate.
+2. Provide the **Project Name**, the **SonarQube URL** that was created previously and click on **Create Project**. Once the project is provisioned, select the URL to navigate.
 
    <img src="images/vsts_project_provisioning.png">
-
+   
 ## Exercise 1: Create a SonarQube Project
 
-In this exercise you will create a Sonarqube project.
+In this exercise you will create a SonarQube project.
 
 1. Login to the SonarQube portal.
 
@@ -104,33 +134,18 @@ In this exercise you will create a Sonarqube project.
 
 3. Create a project with **Name** and **Key** as **MyShuttle**. 
 
-   - **Name**: Name of the project that will be displayed on the web interface
+   - **Name**: Name of the SonarQube project that will be displayed on the web interface
 
-   - **Branch**: Track the quality of short-lived and long-lived code branches
+   - **Branch**[Optional]: Track the quality of short-lived and long-lived code branches
 
-   - **Key**: The project key that is unique for each project
+   - **Key**: The SonarQube project key that is unique for each project
 
    <img src="images/project_creation.png">
 
-## Exercise 2: Update Endpoint
 
-During the project provisioning, a dummy endpoint would be created. We will update the endpoint with sonarqube details.
+## Exercise 2: Modify the Build to Integrate with SonarQube
 
-1. In VSTS, go to **Services** by clicking the gear icon, and click **Update service configuration** link .
-
-   <img src="images/update_endpoint.png">
-
-2. Update endpoint with the below details and click **OK**-
-
-   - **Server URL**: http://YOUR_DNS_NAME:9000
-   - **User name**: admin
-   - **Password**:  admin
-
-   <img src="images/update_2.png">
-
-## Exercise 3: Modify the Build to Integrate with SonarQube
-
-Now that SonarQube server is running, we will modify the build definition to integrate with SonarQube to analyse the java code provisioned by the demo generator system.
+Now that the SonarQube server is running, we will modify VSTS build definition to integrate with SonarQube to analyse the java code provisioned by the VSTS Demo Generator system.
 
 1. Go to **Builds** under **Build and Release** tab, edit the build definition **SonarQube**. The tasks used in the build definition are listed.
 
@@ -143,11 +158,11 @@ Now that SonarQube server is running, we will modify the build definition to int
    </thead>
    <tr>
       <td><a href="https://docs.microsoft.com/en-gb/vsts/build-release/tasks/build/maven"><b>Maven</b></a> <img src="images/maven.png"></td>
-      <td>maven task compiles and runs unit tests for the java code</td>
+      <td>compiles and runs unit tests for the java code</td>
    </tr>
    <tr>
       <td><a href="http://bit.ly/2grMxTQ"><b>Copy Files</b></a> <img src="images/copy-files.png"> </td>
-      <td>copy files will copy the build artifact to VSTS</td>
+      <td>copies the build artifacts to VSTS</td>
    </tr>
    <tr>
       <td><a href="http://bit.ly/2yBgXde"><b>Publish Build Artifacts</b></a> <img src="images/publish-build-artifacts.png"> </td>
@@ -185,7 +200,7 @@ Now that SonarQube server is running, we will modify the build definition to int
 
    <img src="images/build_in_progress.png">
 
-4. You will see the build summary with **Test Results, Code Coverage** and link to **SonarQube Analysis Report** when completed.  The **Quality Gate** displayed in the report is the best way to enforce a quality policy in your organization.
+4. You will see the build summary with **Test Results, Code Coverage** and link to **SonarQube Analysis Report** when completed.  The **Quality Gate** displayed in the report is the best way to enforce a code quality policy in your organization.
 
    <img src="images/build_summary.png">
 
@@ -195,7 +210,7 @@ Now that SonarQube server is running, we will modify the build definition to int
 
 ## Exercise 4: Analyse SonarQube Reports
 
-We will analyse the report in SonarQube portal to see if there are critical bugs and fix them in our code. In the below dashboard we have a critical bug. Let us fix this.
+We will analyse the report in SonarQube portal to see if there are critical bugs and fix them in our code. In the below dashboard, we have a critical bug. Let us fix this.
 
 1. Go to SonarQube and click **Bugs**.
 
@@ -217,7 +232,7 @@ We will analyse the report in SonarQube portal to see if there are critical bugs
 
    Make the following changes in the code as shown:
 
-   - Go to line number **3** and add the below code.
+   - Implement the below interface.
 
       >import java.io.Serializable;
 
@@ -229,7 +244,7 @@ We will analyse the report in SonarQube portal to see if there are critical bugs
 
       <img src="images/code_edit.png">
 
-5. Save and commit the changes.
+5. Commit the changes.
 
 6. Once the CI build is completed, you will see the Quality Gate **failing** in the build summary.
 
@@ -243,7 +258,9 @@ We see the Quality Gate is failing after the code change as there is no unit tes
 
 ## Summary
 
-With **Visual Studio Team Services** and **SonarQube** you can easily manage code quality.
+With **Visual Studio Team Services** and **SonarQube**, you can easily manage code quality.
+
+With **Visual Studio Team Services** and its integration with **SonarQube**, we can measure technical debt, analyze the results, manage and improve the code quality efficiently.
 
 ## Feedback
 
