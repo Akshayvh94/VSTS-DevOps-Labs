@@ -23,11 +23,11 @@ Technical debt is the set of problems in a development effort that make forward 
 
 1. Click **Deploy To Azure** to provision SonarQube Server on Azure VM.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhsachinraj%2FAzurelabs%2Fmaster%2Fsonarqube%2Ftemplates%2Fazuredeploy.json"><img src="http://azuredeploy.net/deploybutton.png"></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2FVSTS-DevOps-Labs%2Fsonarqube%2Fsonarqube%2Ftemplates%2Fazuredeploy.json"><img src="http://azuredeploy.net/deploybutton.png"></a>
 
-    <img src="images/CustomDeployAzure1.png"></a>
+    <img src="images/CustomDeployAzure1.png"></a> 
 
-    <img src="images/CustomDeployAzure2.png"></a>
+    <img src="images/CustomDeployAzure2.png"></a> 
 
   
    Provide the following parameters as shown.
@@ -92,7 +92,7 @@ Technical debt is the set of problems in a development effort that make forward 
 
 2. After providing all of the required values in the above table, check the Terms & Conditions checkbox and click on the Purchase button.
 
-   <img src="images/CustomDeployAzure3.png"></a>
+   <img src="images/CustomDeployAzure3.png"></a> 
 
    >It takes approximately 25-30 minutes to provision the environment
 
@@ -113,15 +113,11 @@ Technical debt is the set of problems in a development effort that make forward 
 
    <img src="images/sonarqube_portal.png">
 
-Now, let us create a SonarQube project.
-
-1. Login to the SonarQube portal.
-
-2. Click on **Administration** in the toolbar, go to **Projects** tab and click **Management**.
+3. Click on **Administration** in the toolbar, go to **Projects** tab and click **Management**.
 
    <img src="images/sonar_admin.png">
 
-3. Create a project with **Name** and **Key** as **MyShuttle**. 
+4. Create a project with **Name** and **Key** as **MyShuttle**. 
 
    - **Name**: Name of the SonarQube project that will be displayed on the web interface
 
