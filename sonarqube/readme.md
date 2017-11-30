@@ -104,11 +104,11 @@ Technical debt is the set of problems in a development effort that make forward 
 
 1. Access the **SonarQube** portal providing the DNS name suffixed by the port number. 
 
-   >The default port for SonarQube is 9000. Copy the DNS name from the created Virtual Machine in Azure Portal as shown and append :9000 at the end. The final URL will be **http://YOUR_DNS_NAME:9000**
+   >The default port for SonarQube is 9000. Copy the DNS name from the created Virtual Machine in Azure Portal as shown and append :9000 at the end. The final **SonarQube** URL will be **http://YOUR_DNS_NAME:9000**
 
    <img src="images/dns_name.png">
 
-2. Login to the SonarQube Portal using the following credentials-    
+2. Open a browser and login to the SonarQube Portal using the following credentials-    
    >**Username= admin, Password= admin**
 
    <img src="images/sonarqube_portal.png">
@@ -119,11 +119,11 @@ Technical debt is the set of problems in a development effort that make forward 
 
 4. Create a project with **Name** and **Key** as **MyShuttle**. 
 
-   - **Name**: Name of the SonarQube project that will be displayed on the web interface
+   - **Name**: Name of the SonarQube project that will be displayed on the web interface.
 
-   - **Branch**[Optional]: Track the quality of short-lived and long-lived code branches
+   - **Branch**[Optional]: Code branch which is tracked and reviewed for quality of code.
 
-   - **Key**: The SonarQube project key that is unique for each project
+   - **Key**: The SonarQube project key that is unique for each project.
 
    <img src="images/project_creation.png">
 
