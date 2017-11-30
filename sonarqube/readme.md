@@ -113,7 +113,7 @@ Technical debt is the set of problems in a development effort that make forward 
 
    <img src="images/sonarqube_portal.png">
 
-3. Click on **Administration** in the toolbar, go to **Projects** tab and click **Management**.
+3. Click on **Administration** in the toolbar, go to **Projects** tab and click **Management**. 
 
    <img src="images/sonar_admin.png">
 
