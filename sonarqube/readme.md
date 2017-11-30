@@ -96,7 +96,7 @@ Technical debt is the set of problems in a development effort that make forward 
 
    >It takes approximately 25-30 minutes to provision the environment
 
-3. Once the deployment is successful, you will see the resources in Azure Portal.
+3. Once the deployment is successful, you will see the resources in Azure Portal. 
 
    <img src="images/azure_resources.png">
 
