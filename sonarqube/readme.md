@@ -245,7 +245,7 @@ We will analyse the report in SonarQube portal to see if there are critical bugs
 
 5. Commit the changes.
 
-6. Once the CI build completes, you will see the Quality Gate **failing** in the build summary.
+6. Once the CI build completes, you will see the Quality Gate **failing** in the build summary. 
 
    <img src="images/build_summary_bug_fix.png">
 
