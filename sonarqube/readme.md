@@ -78,12 +78,12 @@ Technical debt is the set of problems in a development effort that make forward 
    </tr>
    <tr>
       <td>_artifacts Location</td>
-      <td>This value will be automatically generated</td>
+      <td>This value will be automatically generated. Leave the field as it is.</td>
       
    </tr>
    <tr>
       <td>_artifacts Location Sas Token</td>
-      <td>The Sas Token will be automatically generated</td>
+      <td>The Sas Token will be automatically generated. Leave the field as it is.</td>
       
    </tr>
    </table>
@@ -111,17 +111,6 @@ Technical debt is the set of problems in a development effort that make forward 
 
    <img src="images/sonarqube_portal.png">
 
-
-## Setting up the VSTS project
-
-1. Use <a href="http://bit.ly/2AWznna" target="_blank">VSTS Demo Data Generator</a> to provision a project on your VSTS account.
-
-   ![](images/vstsdemogen.png)
-
-2. Provide the **Project Name**, the **SonarQube URL** that was created previously and click on **Create Project**. Once the project is provisioned, click the URL to navigate.
-
-   <img src="images/vsts_project_provisioning.png">
-   
 ## Exercise 1: Create a SonarQube Project
 
 In this exercise you will create a SonarQube project.
@@ -142,8 +131,19 @@ In this exercise you will create a SonarQube project.
 
    <img src="images/project_creation.png">
 
+## Exercise 2: Setting up the VSTS project
 
-## Exercise 2: Modify the Build to Integrate with SonarQube
+1. Use <a href="http://bit.ly/2AWznna" target="_blank">VSTS Demo Data Generator</a> to provision a project on your VSTS account.
+
+   ![](images/vstsdemogen.png)
+
+2. Provide the **Project Name**, the **SonarQube URL** that was created previously and click on **Create Project**. Once the project is provisioned, click the URL to navigate.
+
+   <img src="images/vsts_project_provisioning.png">
+   
+
+
+## Exercise 3: Modify the Build to Integrate with SonarQube
 
 Now that the SonarQube server is running, we will modify VSTS build definition to integrate with SonarQube to analyse the java code provisioned by the VSTS Demo Generator system.
 
@@ -190,6 +190,9 @@ Now that the SonarQube server is running, we will modify VSTS build definition t
       <td>MyShuttle</td>
       <td>The unique key of the project in SonarQube</td>
    </tr>
+
+   >Here, the SonarQube Project Name and SonarQube Project Key values are based on the values you provide in Exercise 1: Step 3. If **MyShuttle** is the value provided during the Project Key and Project Name creation, then you don't have to change it here as its already pre-configured.
+   
    </table>
    
    <br/>
