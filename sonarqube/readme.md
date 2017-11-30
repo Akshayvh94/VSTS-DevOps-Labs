@@ -100,20 +100,20 @@ Technical debt is the set of problems in a development effort that make forward 
 
    <img src="images/azure_resources.png">
 
-3. Access the **SonarQube** portal providing the DNS name suffixed by the port number. 
+## Exercise 1: Create a SonarQube Project
+
+1. Access the **SonarQube** portal providing the DNS name suffixed by the port number. 
 
    >The default port for SonarQube is 9000. Copy the DNS name from the created Virtual Machine in Azure Portal as shown and append :9000 at the end. The final URL will be **http://YOUR_DNS_NAME:9000**
 
    <img src="images/dns_name.png">
 
-4. Login to the SonarQube Portal using the following credentials-    
+2. Login to the SonarQube Portal using the following credentials-    
    >**Username= admin, Password= admin**
 
    <img src="images/sonarqube_portal.png">
 
-## Exercise 1: Create a SonarQube Project
-
-In this exercise you will create a SonarQube project.
+Now, let us create a SonarQube project.
 
 1. Login to the SonarQube portal.
 
@@ -192,7 +192,7 @@ Now that the SonarQube server is running, we will modify VSTS build definition t
    </tr>
 
    >Here, the SonarQube Project Name and SonarQube Project Key values are based on the values you provide in Exercise 1: Step 3. If **MyShuttle** is the value provided during the Project Key and Project Name creation, then you don't have to change it here as its already pre-configured.
-   
+
    </table>
    
    <br/>
