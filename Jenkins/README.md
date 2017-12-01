@@ -37,7 +37,7 @@ This lab shows how you can integrate Team Servcies and Jenkins. In this lab, we 
 
 1. You will notice that by default the instance listens on port 8080 using HTTP. If you want to set up HTTPS communication, you will need to provide an SSL certificate. If you do not setup HTTPS communication, the best way to make sure the sign-in credentials are not leaked due to a "Man-in-the-middle" attack is to only log in using SSH tunneling. An SSH tunnel is an encrypted tunnel created through an SSH protocol connection, which can be used to transfer unencrypted traffic over an unsecured network. Simply run this command
     ````
-    putty.exe -ssh -L 8080:localhost:8080 \<username>@\<ip address>
+    putty.exe -ssh -L 8080:localhost:8080 <username>@<ip address>
     ````
     ![Connecting from Putty](images/ssh2.png)
 
