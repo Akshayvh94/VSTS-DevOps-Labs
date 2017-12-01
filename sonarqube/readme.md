@@ -213,7 +213,7 @@ Now that the SonarQube server is running, we will modify VSTS build definition t
 
 ## Exercise 4: Analyse SonarQube Reports
 
-We will analyse the report in SonarQube portal to see if there are critical bugs and fix them in our code. In the below dashboard, we have a critical bug. Let us fix this.
+We will analyse the report in SonarQube portal to see if there are critical bugs and fix them in our code. In the below dashboard, we notice that there is a critical bug which needs to be fixed.
 
 1. Go to SonarQube and click **Bugs**.
 
@@ -265,5 +265,5 @@ With **Visual Studio Team Services** and its integration with **SonarQube**, we 
 
 ## Feedback
 
-
+Please let <a href=" devopsdemos@microsoft.com">us</a> know if you have any feedback on this lab.
 
