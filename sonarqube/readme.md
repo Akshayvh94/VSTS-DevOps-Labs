@@ -1,17 +1,21 @@
 ## Managing Technical Debt using VSTS and SonarQube 
 
 ## Overview
-
-In this lab, you will be introduced to technical debt management, configuring VSTS Team Build definition to use SonarQube and how to understand the analysis results.
-
-Technical debt is the set of problems in a development effort that make forward progress on customer value inefficient. Technical debt saps productivity by making code hard to understand, fragile, time-consuming to change, difficult to validate, and creates unplanned work that blocks progress.
-
 <a href="https://www.sonarqube.org/">SonarQube</a> is an open source platform for continuous inspection of code quality to perform automatic reviews with static analysis of code to
 
 - Detect Bugs
 - Code Smells
 - Security Vulnerabilities
 - Centralize Quality</a>
+
+Technical debt is the set of problems in a development effort that make forward progress on customer value inefficient. Technical debt saps productivity by making code hard to understand, fragile, time-consuming to change, difficult to validate, and creates unplanned work that blocks progress.
+
+In this lab, you will learn to integrate Visual Studio Team Services with SonarQube along with 
+
+- Provision SonarQube server from an Azure template
+- Setup SonarQube project
+- Setup a VSTS project and CI build to integrate with SonarQube
+- Analyse SonarQube reports
 
 ## Pre-requisites
 
