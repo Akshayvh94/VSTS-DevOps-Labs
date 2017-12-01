@@ -265,5 +265,4 @@ With **Visual Studio Team Services** and its integration with **SonarQube**, we 
 
 ## Feedback
 
-Please let <a href=" devopsdemos@microsoft.com">us</a> know if you have any feedback on this lab.
-
+Please let <a href="mailto:devopsdemos@microsoft.com" target="_blank" >us</a> know if you have any feedback on this lab.
