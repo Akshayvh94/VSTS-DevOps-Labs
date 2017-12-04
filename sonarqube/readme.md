@@ -227,7 +227,7 @@ We will analyse the report in SonarQube portal to see if there are critical bugs
 
    <img src="images/bug_details_2.png">
 
-4. The error is due to explicitly casting the list object by making serializable. Lets fix the bug.
+4. The error is because the session attribute accepts only serialized objects. This can be fixed by explicitly casting the list object to serializable. Lets fix this bug -
 
    Go to below path to edit the file in **VSTS** code tab:-
    
